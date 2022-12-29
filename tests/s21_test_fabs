@@ -1,0 +1,4 @@
+#test FABS
+ck_assert_int_eq(s21_fabs(-1.5), fabs(-1.5));
+ck_assert_int_eq(s21_fabs(0.5), fabs(0.5));
+ck_assert_int_eq(s21_fabs(1.5), fabs(1.5));

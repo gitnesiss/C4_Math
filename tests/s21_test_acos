@@ -1,0 +1,19 @@
+#test ACOS
+ck_assert_ldouble_eq_tol(s21_acos(0.55), acos(0.55), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(0.55), acos(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_acos(-9)), isnan(acos(-9)));
+ck_assert_int_eq(isnan(s21_acos(-INFINITY)), isnan(acos(-INFINITY)));
+ck_assert_int_eq(isnan(s21_acos(INFINITY)), isnan(acos(INFINITY)));
+ck_assert_int_eq(isnan(s21_acos(NAN)), isnan(acos(NAN)));
+ck_assert_ldouble_eq_tol(s21_acos(1.0), acos(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1.0), acos(-1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(0.0), acos(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-0.0), acos(-0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1), acos(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(1), acos(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-sqrt(3) / 2), acos(-sqrt(3) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-sqrt(2) / 2), acos(-sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1 / 2), acos(-1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(1 / 2), acos(1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(sqrt(2) / 2), acos(sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(sqrt(3) / 2), acos(sqrt(3) / 2), 1e-06);

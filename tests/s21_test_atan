@@ -1,0 +1,16 @@
+#test ATAN
+ck_assert_ldouble_eq_tol(s21_atan(-15.01), atan(-15.01), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(-0.99), atan(-0.99), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(-1), atan(-1), 1e-06);
+ck_assert_ldouble_eq(s21_atan(INFINITY), atan(INFINITY));
+ck_assert_ldouble_eq(s21_atan(-INFINITY), atan(-INFINITY));
+ck_assert_int_eq(isnan(s21_atan(NAN)), isnan(atan(NAN)));
+ck_assert_ldouble_eq(s21_atan(INFINITY), M_PI / 2.0);
+ck_assert_ldouble_eq(atan(INFINITY), M_PI / 2.0);
+ck_assert_ldouble_eq(s21_atan(-INFINITY), M_PI / -2.0);
+ck_assert_ldouble_eq(atan(-INFINITY), M_PI / -2.0);
+ck_assert_ldouble_eq_tol(s21_atan(M_PI / 2.0), s21_atan(M_PI / 2.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(M_PI / -2.0), s21_atan(M_PI / -2.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(1.0), atan(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(1), atan(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(2.1234567), atan(2.1234567), 1e-06);

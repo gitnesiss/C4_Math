@@ -1,0 +1,451 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include "s21_math.h"
+#define M_PI acos(-1)
+#test ABS
+ck_assert_int_eq(s21_abs(-1), abs(-1));
+ck_assert_int_eq(s21_abs(0), abs(0));
+ck_assert_int_eq(s21_abs(1), abs(1));
+#test ACOS
+ck_assert_ldouble_eq_tol(s21_acos(0.55), acos(0.55), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(0.55), acos(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_acos(-9)), isnan(acos(-9)));
+ck_assert_int_eq(isnan(s21_acos(-INFINITY)), isnan(acos(-INFINITY)));
+ck_assert_int_eq(isnan(s21_acos(INFINITY)), isnan(acos(INFINITY)));
+ck_assert_int_eq(isnan(s21_acos(NAN)), isnan(acos(NAN)));
+ck_assert_ldouble_eq_tol(s21_acos(1.0), acos(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1.0), acos(-1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(0.0), acos(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-0.0), acos(-0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1), acos(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(1), acos(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-sqrt(3) / 2), acos(-sqrt(3) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-sqrt(2) / 2), acos(-sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(-1 / 2), acos(-1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(1 / 2), acos(1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(sqrt(2) / 2), acos(sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_acos(sqrt(3) / 2), acos(sqrt(3) / 2), 1e-06);
+#test ASIN
+ck_assert_ldouble_eq_tol(s21_asin(0.55), asin(0.55), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(0.55), asin(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_asin(-9)), isnan(asin(-9)));
+ck_assert_int_eq(isnan(s21_asin(-INFINITY)), isnan(asin(-INFINITY)));
+ck_assert_int_eq(isnan(s21_asin(INFINITY)), isnan(asin(INFINITY)));
+ck_assert_int_eq(isnan(s21_asin(NAN)), isnan(asin(NAN)));
+ck_assert_ldouble_eq_tol(s21_asin(1.0), asin(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1.0), asin(-1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(0.0), asin(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-0.0), asin(-0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1), asin(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(1), asin(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-sqrt(3) / 2), asin(-sqrt(3) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-sqrt(2) / 2), asin(-sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1 / 2), asin(-1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(1 / 2), asin(1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(sqrt(2) / 2), asin(sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(sqrt(3) / 2), asin(sqrt(3) / 2), 1e-06);
+#test ATAN
+ck_assert_ldouble_eq_tol(s21_atan(-15.01), atan(-15.01), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(-0.99), atan(-0.99), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(-1), atan(-1), 1e-06);
+ck_assert_ldouble_eq(s21_atan(INFINITY), atan(INFINITY));
+ck_assert_ldouble_eq(s21_atan(-INFINITY), atan(-INFINITY));
+ck_assert_int_eq(isnan(s21_atan(NAN)), isnan(atan(NAN)));
+ck_assert_ldouble_eq(s21_atan(INFINITY), M_PI / 2.0);
+ck_assert_ldouble_eq(atan(INFINITY), M_PI / 2.0);
+ck_assert_ldouble_eq(s21_atan(-INFINITY), M_PI / -2.0);
+ck_assert_ldouble_eq(atan(-INFINITY), M_PI / -2.0);
+ck_assert_ldouble_eq_tol(s21_atan(M_PI / 2.0), s21_atan(M_PI / 2.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(M_PI / -2.0), s21_atan(M_PI / -2.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(1.0), atan(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(1), atan(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_atan(2.1234567), atan(2.1234567), 1e-06);
+#test CEIL
+ck_assert_int_eq(s21_ceil(-1.5), ceil(-1.5));
+ck_assert_int_eq(s21_ceil(0), ceil(0));
+ck_assert_int_eq(s21_ceil(1.5), ceil(1.5));
+ck_assert_int_eq(s21_ceil(-0.5), ceil(-0.5));
+ck_assert_int_eq(s21_ceil(0.5), ceil(0.5));
+ck_assert_ldouble_infinite(s21_ceil(INFINITY));
+ck_assert_ldouble_infinite(ceil(INFINITY));
+ck_assert_ldouble_nan(s21_ceil(NAN));
+ck_assert_ldouble_nan(ceil(NAN));
+#test COS
+ck_assert_ldouble_eq_tol(s21_cos(0.55), cos(0.55), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(1), cos(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(0), cos(0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-1), cos(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(0.999999), cos(0.999999), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-0.999999), cos(-0.999999), 1e-06);
+ck_assert_int_eq(isnan(s21_cos(NAN)), isnan(cos(NAN)));
+ck_assert_int_eq(isnan(s21_cos(INFINITY)), isnan(cos(INFINITY)));
+ck_assert_int_eq(isnan(s21_cos(-INFINITY)), isnan(cos(-INFINITY)));
+ck_assert_ldouble_eq_tol(s21_cos(0.0), cos(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(M_PI / 6), cos(M_PI / 6), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(M_PI / 4), cos(M_PI / 4), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(M_PI / 3), cos(M_PI / 3), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(M_PI / 2), cos(M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(M_PI), cos(M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(3 * M_PI / 2), cos(3 * M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(2 * M_PI), cos(2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-2 * M_PI), cos(-2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-3 * M_PI), cos(-3 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(174.532925199433), cos(174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-174.532925199433), cos(-174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_cos(-M_PI), cos(-M_PI), 1e-06);
+#test EXP
+ck_assert_ldouble_eq_tol(s21_exp(0), exp(0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(2), exp(2), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(3), exp(3), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(1.5), exp(1.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-1.5), exp(-1.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(0.5), exp(0.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-0.5), exp(-0.5), 1e-6);
+ck_assert_int_eq(s21_exp(715), exp(715));
+ck_assert_int_eq(s21_exp(-715), exp(-715));
+ck_assert_ldouble_eq_tol(s21_exp(-0), exp(-0), 1e-6);
+ck_assert_int_eq(s21_exp(-'A'), exp(-'A'));
+ck_assert_ldouble_eq_tol(s21_exp(0 / 1), exp(0 / 1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-750), exp(-750), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-2), exp(-2), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-1), expl(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-100), expl(-100), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-1000000), expl(-1000000), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(1), expl(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-INFINITY), expl(-INFINITY), 1e-06);
+ck_assert_ldouble_infinite(s21_exp(INFINITY));
+ck_assert_ldouble_nan(s21_exp(NAN));
+
+long double orig_res = 0;
+long double our_res = 0;
+int suc = 0;
+double num = 0;
+
+num = NAN;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isnan(orig_res) && isnan(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = INFINITY;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isinf(orig_res) && isinf(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = -INFINITY;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if ((fabsl(orig_res - our_res) <= 1e-6)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = 1000000;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isinf(orig_res) && isinf(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+#test FABS
+ck_assert_int_eq(s21_fabs(-1.5), fabs(-1.5));
+ck_assert_int_eq(s21_fabs(0.5), fabs(0.5));
+ck_assert_int_eq(s21_fabs(1.5), fabs(1.5));
+#test FLOOR
+ck_assert_int_eq(s21_floor(-1.5), floor(-1.5));
+ck_assert_int_eq(s21_floor(0), floor(0));
+ck_assert_int_eq(s21_floor(1.5), floor(1.5));
+ck_assert_int_eq(s21_floor(-0.5), floor(-0.5));
+ck_assert_int_eq(s21_floor(0.5), floor(0.5));
+#test LOG
+int suc = 0;
+long double orig_res = 0;
+long double our_res = 0;
+orig_res = log(456.789);
+our_res = s21_log(456.789);
+if ((fabsl(orig_res - our_res) <= 1e-6)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+suc = 0;
+orig_res = log(NAN);
+our_res = s21_log(NAN);
+if (isnan(our_res) && isnan(orig_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+suc = 0;
+orig_res = log(0.001);
+our_res = s21_log(0.001);
+if ((fabsl(orig_res - our_res) <= 1e-6)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+suc = 0;
+orig_res = log(0.4);
+our_res = s21_log(0.4);
+if ((fabsl(orig_res - our_res) <= 1e-6)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+suc = 0;
+orig_res = log(-INFINITY);
+our_res = s21_log(-INFINITY);
+if (isnan(our_res) && isnan(orig_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+suc = 0;
+orig_res = log(INFINITY);
+our_res = s21_log(INFINITY);
+if (isinf(our_res) && isinf(orig_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+ck_assert_ldouble_infinite(s21_log(INFINITY));
+ck_assert_ldouble_infinite(log(INFINITY));
+
+ck_assert_ldouble_nan(s21_log(-INFINITY));
+ck_assert_ldouble_nan(log(-INFINITY));
+
+ck_assert_ldouble_nan(s21_log(NAN));
+ck_assert_ldouble_nan(log(NAN));
+
+ck_assert_ldouble_eq_tol(s21_log(1.0), log(1.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1), log(1.1), 1e-6);
+
+ck_assert_ldouble_eq_tol(s21_log(0.5), log(0.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1), log(1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(100), log(100), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(0.5), log(0.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(0.5), log(0.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(DBL_MAX), log(DBL_MAX), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(S21_PI / 3), log(S21_PI / 3), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(9.234578353457e-6), log(9.234578353457e-6),
+                        1e-6);
+ck_assert_ldouble_eq_tol(s21_log(9.234578353457e6), log(9.234578353457e6),
+                        1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1234567.000000004), log(1234567.000000004),
+                        1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1e-16), log(1.1e-16), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1e-45), log(1.1e-45), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1e-18), log(1.1e-18), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1e-19), log(1.1e-19), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(1.1e-23), log(1.1e-23), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(987654321123.123e-30),
+                        log(987654321123.123e-30), 1e-6);
+ck_assert_ldouble_eq_tol(s21_log(98765.123e-11), log(98765.123e-11), 1e-6);
+
+ck_assert_ldouble_infinite(s21_log(0));
+ck_assert_ldouble_infinite(log(0));
+
+ck_assert_ldouble_eq_tol(s21_log(1.1e-17), log(1.1e-17), 1e-6);
+#test POW
+long double base = 0;
+long double exp = 0;
+base = -10.1261;
+exp = -0.72;
+ck_assert_double_nan(s21_pow(base, exp));
+ck_assert_double_nan(pow(base, exp));
+base = +0;
+exp = -0.33;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = -0;
+exp = -0.33;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = -0;
+exp = INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), S21_EPS);
+base = +0;
+exp = 123;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -0;
+exp = 123;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -0;
+exp = INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -1;
+exp = INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -1;
+exp = NAN;
+ck_assert_double_nan(pow(base, exp));
+ck_assert_double_nan(s21_pow(base, exp));
+base = NAN;
+exp = 0;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -123;
+exp = NAN;
+ck_assert_double_nan(s21_pow(base, exp));
+ck_assert_double_nan(pow(base, exp));
+base = 0.5591951;
+exp = -INFINITY;
+ck_assert_ldouble_infinite(pow(base, exp));
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+base = 1.5591951;
+exp = -INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = 0.5591951;
+exp = INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = 1.5591951;
+exp = INFINITY;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = -INFINITY;
+exp = -193491;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -INFINITY;
+exp = -142;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = -INFINITY;
+exp = 141;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = -INFINITY;
+exp = 142;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = INFINITY;
+exp = -1;
+ck_assert_ldouble_eq_tol(s21_pow(base, exp), pow(base, exp), 1e-6);
+base = INFINITY;
+exp = 1;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+base = -INFINITY;
+exp = 0.5;
+ck_assert_ldouble_infinite(s21_pow(base, exp));
+ck_assert_ldouble_infinite(pow(base, exp));
+
+ck_assert_ldouble_eq_tol(s21_pow(0.0, 0.0), pow(0.0, 0.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(-1, 4), pow(-1, 4), 1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(2, 18), pow(2, 18), 1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(2.1, 11), pow(2.1, 11), 1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(1.23456e-7, 2.21), pow(1.23456e-7, 2.21),
+                        1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(2.1234567, -2), pow(2.1234567, -2), 1e-6);
+ck_assert_ldouble_eq_tol(s21_pow(9.99999999e3, 9.95e-4),
+                        pow(9.99999999e3, 9.95e-4), 1e-6);
+exp = -12;
+ck_assert_ldouble_infinite(s21_pow(+0, exp));
+ck_assert_ldouble_infinite(pow(+0, exp));
+exp = -12;
+ck_assert_ldouble_infinite(s21_pow(-0, exp));
+ck_assert_ldouble_infinite(pow(-0, exp));
+exp = 0;
+ck_assert_ldouble_eq_tol(s21_pow(-0, exp), pow(-0, exp), 1e-6);
+exp = NAN;
+ck_assert_double_nan(s21_pow(+0, exp));
+ck_assert_double_nan(pow(+0, exp));
+exp = 2.456;
+ck_assert_ldouble_eq_tol(s21_pow(+0, exp), pow(+0, exp), 1e-6);
+exp = -INFINITY;
+ck_assert_ldouble_infinite(s21_pow(+0, exp));
+ck_assert_ldouble_infinite(pow(+0, exp));
+exp = 56;
+ck_assert_ldouble_eq_tol(s21_pow(+0, exp), pow(+0, exp), 1e-6);
+exp = 56;
+ck_assert_ldouble_eq_tol(s21_pow(-0, exp), pow(-0, exp), 1e-6);
+exp = 56.345;
+ck_assert_ldouble_eq_tol(s21_pow(-0, exp), pow(-0, exp), 1e-6);
+exp = INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(-1, exp), pow(-1, exp), 1e-6);
+exp = -INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(-1, exp), pow(-1, exp), 1e-6);
+exp = NAN;
+ck_assert_ldouble_eq_tol(s21_pow(+1, exp), pow(+1, exp), 1e-6);
+exp = -0;
+ck_assert_ldouble_eq_tol(s21_pow(4567, exp), pow(4567, exp), 1e-6);
+exp = +0;
+ck_assert_ldouble_eq_tol(s21_pow(34567, exp), pow(34567, exp), 1e-6);
+exp = -0;
+ck_assert_ldouble_eq_tol(s21_pow(NAN, exp), pow(NAN, exp), 1e-6);
+exp = +0;
+ck_assert_ldouble_eq_tol(s21_pow(NAN, exp), pow(NAN, exp), 1e-6);
+exp = NAN;
+ck_assert_double_nan(s21_pow(NAN, exp));
+ck_assert_double_nan(pow(NAN, exp));
+exp = INFINITY;
+ck_assert_ldouble_infinite(s21_pow(INFINITY, exp));
+ck_assert_ldouble_infinite(pow(INFINITY, exp));
+exp = -INFINITY;
+ck_assert_ldouble_eq_tol(s21_pow(-INFINITY, exp), pow(-INFINITY, exp), 1e-6);
+exp = INFINITY;
+ck_assert_ldouble_infinite(s21_pow(-INFINITY, exp));
+ck_assert_ldouble_infinite(pow(-INFINITY, exp));
+exp = 3;
+ck_assert_ldouble_eq_tol(s21_pow(-3, exp), pow(-3, exp), 1e-6);
+exp = -3;
+ck_assert_ldouble_eq_tol(s21_pow(-3, exp), pow(-3, exp), 1e-6);
+exp = -3;
+ck_assert_ldouble_eq_tol(s21_pow(3, exp), pow(3, exp), 1e-6);
+exp = 3;
+ck_assert_ldouble_eq(s21_pow(3, exp), pow(3, exp));
+ck_assert_ldouble_eq(s21_pow(1, 3.3), pow(1, 3.3));
+ck_assert_ldouble_eq(s21_pow(3, -1), pow(3, -1));
+ck_assert_ldouble_eq(s21_pow(3.3, 0), pow(3.3, 0));
+#test SIN
+ck_assert_double_eq_tol(s21_sin(0.55), sin(0.55), 1e-06);
+ck_assert_double_eq_tol(s21_sin(1), sin(1), 1e-06);
+ck_assert_double_eq_tol(s21_sin(0), sin(0), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-1), sin(-1), 1e-06);
+ck_assert_double_eq_tol(s21_sin(0.999999), sin(0.999999), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-0.999999), sin(-0.999999), 1e-06);
+ck_assert_int_eq(isnan(s21_sin(NAN)), isnan(sin(NAN)));
+ck_assert_int_eq(isnan(s21_sin(INFINITY)), isnan(sin(INFINITY)));
+ck_assert_int_eq(isnan(s21_sin(-INFINITY)), isnan(sin(-INFINITY)));
+ck_assert_double_eq_tol(s21_sin(0.0), sin(0.0), 1e-06);
+ck_assert_double_eq_tol(s21_sin(M_PI / 6), sin(M_PI / 6), 1e-06);
+ck_assert_double_eq_tol(s21_sin(M_PI / 4), sin(M_PI / 4), 1e-06);
+ck_assert_double_eq_tol(s21_sin(M_PI / 3), sin(M_PI / 3), 1e-06);
+ck_assert_double_eq_tol(s21_sin(M_PI / 2), sin(M_PI / 2), 1e-06);
+ck_assert_double_eq_tol(s21_sin(M_PI), sin(M_PI), 1e-06);
+ck_assert_double_eq_tol(s21_sin(3 * M_PI / 2), sin(3 * M_PI / 2), 1e-06);
+ck_assert_double_eq_tol(s21_sin(2 * M_PI), sin(2 * M_PI), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-2 * M_PI), sin(-2 * M_PI), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-3 * M_PI), sin(-3 * M_PI), 1e-06);
+ck_assert_double_eq_tol(s21_sin(174.532925199433), sin(174.532925199433), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-174.532925199433), sin(-174.532925199433), 1e-06);
+ck_assert_double_eq_tol(s21_sin(-M_PI), sin(-M_PI), 1e-06);
+#test SQRT
+double num = 0;
+
+num = -15.01;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+num = INFINITY;
+ck_assert_ldouble_infinite(s21_sqrt(num));
+ck_assert_ldouble_infinite(sqrt(num));
+num = -INFINITY;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+num = NAN;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+
+ck_assert_ldouble_eq_tol(s21_sqrt(1.0), sqrt(1.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(1.1), sqrt(1.1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(0.0), sqrt(0.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(-0.0), sqrt(-0.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(10e+16), sqrt(10e+16), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(1), sqrt(1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(100), sqrt(100), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(98765432.123), sqrt(98765432.123), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(981.123e6), sqrt(981.123e6), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(981.123e-15), sqrt(981.123e-15), 1e-6);
+#test TAN
+ck_assert_ldouble_eq_tol(s21_tan(-15.01), tan(-15.01), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(0.55), tan(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_tan(NAN)), isnan(tan(NAN)));
+ck_assert_int_eq(isnan(s21_tan(INFINITY)), isnan(tan(INFINITY)));
+ck_assert_int_eq(isnan(s21_tan(-INFINITY)), isnan(tan(-INFINITY)));
+ck_assert_ldouble_eq_tol(s21_tan(0), tan(0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(0.0), tan(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 6), tan(M_PI / 6), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 4), tan(M_PI / 4), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 3), tan(M_PI / 3), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 2), tan(M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-M_PI / 2), tan(-M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI), tan(M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(2 * M_PI), tan(2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-2 * M_PI), tan(-2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-3 * M_PI), tan(-3 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(174.532925199433), tan(174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-174.532925199433), tan(-174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-M_PI), tan(-M_PI), 1e-06);

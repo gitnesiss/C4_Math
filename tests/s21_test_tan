@@ -1,0 +1,20 @@
+#test TAN
+ck_assert_ldouble_eq_tol(s21_tan(-15.01), tan(-15.01), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(0.55), tan(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_tan(NAN)), isnan(tan(NAN)));
+ck_assert_int_eq(isnan(s21_tan(INFINITY)), isnan(tan(INFINITY)));
+ck_assert_int_eq(isnan(s21_tan(-INFINITY)), isnan(tan(-INFINITY)));
+ck_assert_ldouble_eq_tol(s21_tan(0), tan(0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(0.0), tan(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 6), tan(M_PI / 6), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 4), tan(M_PI / 4), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 3), tan(M_PI / 3), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI / 2), tan(M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-M_PI / 2), tan(-M_PI / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(M_PI), tan(M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(2 * M_PI), tan(2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-2 * M_PI), tan(-2 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-3 * M_PI), tan(-3 * M_PI), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(174.532925199433), tan(174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-174.532925199433), tan(-174.532925199433), 1e-06);
+ck_assert_ldouble_eq_tol(s21_tan(-M_PI), tan(-M_PI), 1e-06);

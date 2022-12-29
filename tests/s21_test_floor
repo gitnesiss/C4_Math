@@ -1,0 +1,6 @@
+#test FLOOR
+ck_assert_int_eq(s21_floor(-1.5), floor(-1.5));
+ck_assert_int_eq(s21_floor(0), floor(0));
+ck_assert_int_eq(s21_floor(1.5), floor(1.5));
+ck_assert_int_eq(s21_floor(-0.5), floor(-0.5));
+ck_assert_int_eq(s21_floor(0.5), floor(0.5));

@@ -1,0 +1,26 @@
+#test SQRT
+double num = 0;
+
+num = -15.01;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+num = INFINITY;
+ck_assert_ldouble_infinite(s21_sqrt(num));
+ck_assert_ldouble_infinite(sqrt(num));
+num = -INFINITY;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+num = NAN;
+ck_assert_ldouble_nan(s21_sqrt(num));
+ck_assert_ldouble_nan(sqrt(num));
+
+ck_assert_ldouble_eq_tol(s21_sqrt(1.0), sqrt(1.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(1.1), sqrt(1.1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(0.0), sqrt(0.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(-0.0), sqrt(-0.0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(10e+16), sqrt(10e+16), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(1), sqrt(1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(100), sqrt(100), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(98765432.123), sqrt(98765432.123), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(981.123e6), sqrt(981.123e6), 1e-6);
+ck_assert_ldouble_eq_tol(s21_sqrt(981.123e-15), sqrt(981.123e-15), 1e-6);

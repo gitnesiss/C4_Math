@@ -1,0 +1,10 @@
+#test CEIL
+ck_assert_int_eq(s21_ceil(-1.5), ceil(-1.5));
+ck_assert_int_eq(s21_ceil(0), ceil(0));
+ck_assert_int_eq(s21_ceil(1.5), ceil(1.5));
+ck_assert_int_eq(s21_ceil(-0.5), ceil(-0.5));
+ck_assert_int_eq(s21_ceil(0.5), ceil(0.5));
+ck_assert_ldouble_infinite(s21_ceil(INFINITY));
+ck_assert_ldouble_infinite(ceil(INFINITY));
+ck_assert_ldouble_nan(s21_ceil(NAN));
+ck_assert_ldouble_nan(ceil(NAN));

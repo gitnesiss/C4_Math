@@ -1,0 +1,51 @@
+#test EXP
+ck_assert_ldouble_eq_tol(s21_exp(0), exp(0), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(2), exp(2), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(3), exp(3), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(1.5), exp(1.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-1.5), exp(-1.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(0.5), exp(0.5), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-0.5), exp(-0.5), 1e-6);
+ck_assert_int_eq(s21_exp(715), exp(715));
+ck_assert_int_eq(s21_exp(-715), exp(-715));
+ck_assert_ldouble_eq_tol(s21_exp(-0), exp(-0), 1e-6);
+ck_assert_int_eq(s21_exp(-'A'), exp(-'A'));
+ck_assert_ldouble_eq_tol(s21_exp(0 / 1), exp(0 / 1), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-750), exp(-750), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-2), exp(-2), 1e-6);
+ck_assert_ldouble_eq_tol(s21_exp(-1), expl(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-100), expl(-100), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-1000000), expl(-1000000), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(1), expl(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_exp(-INFINITY), expl(-INFINITY), 1e-06);
+ck_assert_ldouble_infinite(s21_exp(INFINITY));
+ck_assert_ldouble_nan(s21_exp(NAN));
+
+long double orig_res = 0;
+long double our_res = 0;
+int suc = 0;
+double num = 0;
+
+num = NAN;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isnan(orig_res) && isnan(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = INFINITY;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isinf(orig_res) && isinf(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = -INFINITY;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if ((fabsl(orig_res - our_res) <= 1e-6)) suc = 1;
+ck_assert_int_eq(1, suc);
+
+num = 1000000;
+orig_res = exp(num), our_res = s21_exp(num);
+suc = 0;
+if (isinf(orig_res) && isinf(our_res)) suc = 1;
+ck_assert_int_eq(1, suc);

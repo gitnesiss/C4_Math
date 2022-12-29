@@ -1,0 +1,19 @@
+#test ASIN
+ck_assert_ldouble_eq_tol(s21_asin(0.55), asin(0.55), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(0.55), asin(0.55), 1e-06);
+ck_assert_int_eq(isnan(s21_asin(-9)), isnan(asin(-9)));
+ck_assert_int_eq(isnan(s21_asin(-INFINITY)), isnan(asin(-INFINITY)));
+ck_assert_int_eq(isnan(s21_asin(INFINITY)), isnan(asin(INFINITY)));
+ck_assert_int_eq(isnan(s21_asin(NAN)), isnan(asin(NAN)));
+ck_assert_ldouble_eq_tol(s21_asin(1.0), asin(1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1.0), asin(-1.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(0.0), asin(0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-0.0), asin(-0.0), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1), asin(-1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(1), asin(1), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-sqrt(3) / 2), asin(-sqrt(3) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-sqrt(2) / 2), asin(-sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(-1 / 2), asin(-1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(1 / 2), asin(1 / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(sqrt(2) / 2), asin(sqrt(2) / 2), 1e-06);
+ck_assert_ldouble_eq_tol(s21_asin(sqrt(3) / 2), asin(sqrt(3) / 2), 1e-06);
